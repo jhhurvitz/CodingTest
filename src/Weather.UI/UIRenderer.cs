@@ -29,17 +29,17 @@ public class UIRenderer
     }
 
     private async Task<string> RenderLocation(Location location)
-    {
-        StringBuilder output = new StringBuilder();
+    {    StringBuilder output = new StringBuilder();
+        output.AppendLine(new string('_', 30));
+        output.AppendLine($"{location.City}, {location.State}");
+        output.AppendLine();
+        output.AppendLine("Date       Avg Temp(F)");
+        output.AppendLine(new string('-', 30));
+
         try
         {
             var weather = await _weatherRepository.GetWeatherReport(location);
-            output.AppendLine(new string('_', 30));
-            output.AppendLine($"{location.City}, {location.State}");
-            output.AppendLine();
-            output.AppendLine("Date       Avg Temp(F)");
-            output.AppendLine(new string('-', 30));
-
+     
             foreach(var average in weather.averages)
             {
                 string temperatureLine = $"{average.Key.Date:mm/dd/yyyy}{(average.Value.ChanceOfPrecip ? "* ": "  ")}{average.Value.temperature:F2} F";
@@ -47,11 +47,13 @@ public class UIRenderer
             }
             output.AppendLine();
             output.AppendLine();
-            return output.ToString();
+           
         }
         catch(DataRetrievalException exception)
         {
-            throw;
+            output.AppendLine($"an error has occured retrieve your data {exception.Message}");
         }
+
+         return output.ToString();
     }
 }
