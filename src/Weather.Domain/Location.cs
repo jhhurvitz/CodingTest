@@ -1,1 +1,1 @@
-public record Location(string City, string State);
+public record Location(string City, string State,string CountryCode="US");

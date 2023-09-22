@@ -1,6 +1,7 @@
+using Weather.Client.Models;
 using Weather.Domain;
 
-namespace Namespace;
+namespace Weather.Client.Abstracts;
 public abstract class AbstractWeatherRepository : IWeatherRepository
 {
     private readonly IGeoCoder _geoCoder;
@@ -14,9 +15,9 @@ public abstract class AbstractWeatherRepository : IWeatherRepository
     {
         var cordinates = await GetGeoCode(location);
 
-        return await GetWeatherReportFromCordinates(cordinates);
+        return await GetWeatherReportFromCordinates(cordinates,location);
 
     }
 
-     protected abstract Task<WeatherReport> GetWeatherReportFromCordinates(Cordinates coordinates);
+     protected abstract Task<WeatherReport> GetWeatherReportFromCordinates(Cordinates coordinates,Location location);
 }

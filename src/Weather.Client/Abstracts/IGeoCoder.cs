@@ -1,6 +1,7 @@
+using Weather.Client.Models;
 using Weather.Domain;
 
-namespace Namespace;
+namespace Weather.Client.Abstracts;
 public interface IGeoCoder
 {
     Task<Cordinates> GetCordinates(Location location);

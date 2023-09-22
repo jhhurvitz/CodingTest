@@ -9,4 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Weather.Client\Weather.Client.csproj" />
+    <ProjectReference Include="..\Weather.UI\Weather.UI.csproj" />
+  </ItemGroup>
 </Project>

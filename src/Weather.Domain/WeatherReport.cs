@@ -1,3 +1,6 @@
 ﻿namespace Weather.Domain;
 
-public record WeatherReport(Location Location, decimal FiveDayAverage, decimal ChanceOfPrecipitation);
+
+public record Day (bool ChanceOfPrecip, decimal temperature);
+
+public record WeatherReport(Location Location, Dictionary<DateTime,Day> averages, bool ChanceOfPrecipitation);
