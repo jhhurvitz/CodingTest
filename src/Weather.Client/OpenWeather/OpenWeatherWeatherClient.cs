@@ -56,7 +56,7 @@ public class OpenWeatherWeatherClient
             }
             else
             {
-                var content = await response.Content.ReadFromJsonAsync<Dictionary<string,string>>();
+                var content = await response.Content.ReadFromJsonAsync<Dictionary<string,object>>();
                 StringBuilder msg = new StringBuilder();
 
                 switch(response.StatusCode)
@@ -78,7 +78,7 @@ public class OpenWeatherWeatherClient
                 if(content?.TryGetValue("message",out var message) ?? false)
                 {
                     msg.AppendLine("Additional Details:");
-                    msg.AppendLine(message);
+                    msg.AppendLine(message.ToString());
                 }
                 
                 throw new DataRetrievalException(msg.ToString(),null);

@@ -51,7 +51,7 @@ public class UIRenderer
         }
         catch(DataRetrievalException exception)
         {
-            output.AppendLine($"an error has occured retrieve your data {exception.Message}");
+            output.AppendLine($"an error has occured retrieving your data {exception.Message}");
         }
 
          return output.ToString();
