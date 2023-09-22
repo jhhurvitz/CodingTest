@@ -15,6 +15,9 @@ public class Report
 {
     [JsonPropertyName("dt")]
     public long Time {get;set;}
+
+      [JsonPropertyName("dt_txt")]
+    public string DateTime {get;set;}
     public ReportMain Main {get;set;}
    
     [JsonPropertyName("pop")]
