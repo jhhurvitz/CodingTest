@@ -13,11 +13,11 @@ public abstract class AbstractWeatherRepository : IWeatherRepository
     }
     public async Task<WeatherReport> GetWeatherReport(Location location)
     {
-        var cordinates = await GetGeoCode(location);
+        var Coordinates = await GetGeoCode(location);
 
-        return await GetWeatherReportFromCordinates(cordinates,location);
+        return await GetWeatherReportFromCoordinates(Coordinates,location);
 
     }
 
-     protected abstract Task<WeatherReport> GetWeatherReportFromCordinates(Coordinates coordinates,Location location);
+     protected abstract Task<WeatherReport> GetWeatherReportFromCoordinates(Coordinates coordinates,Location location);
 }

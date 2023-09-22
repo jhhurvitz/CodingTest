@@ -18,7 +18,7 @@ public class OpenWeatherWeatherClient
         _apiKey = configuration.ApiKey;
         _units = units;
     }
-    public async Task<WeatherResponse?> GetWeatherReport(Cordinates cordinates)
+    public async Task<WeatherResponse?> GetWeatherReport(Coordinates cordinates)
     {
         return await MakeJsonGetRequest<WeatherResponse>("data/2.5/forecast",new Dictionary<string, string>(){
             {"lat",$"{cordinates.latitude}"},

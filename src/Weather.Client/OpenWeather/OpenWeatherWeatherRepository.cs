@@ -13,7 +13,7 @@ public class OpenWeatherWeatherRepository : AbstractWeatherRepository
         _client = client;
     }
 
-    protected override async Task<WeatherReport> GetWeatherReportFromCordinates(coordinates coordinates,Location location)
+    protected override async Task<WeatherReport> GetWeatherReportFromCoordinates(Coordinates coordinates,Location location)
     {
         var response =  await _client.GetWeatherReport(coordinates);
 

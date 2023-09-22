@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using System.Threading.Channels;
+
 
 namespace Weather.Client.OpenWeather.Models;
 public class WeatherResponse
