@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/Weather.Console/bin/Debug/net6.0/Weather.Console.dll",
-            "args": [],
+            "args": ["3d921d7b7f1c2329a93ea2e2dd803940"],
             "cwd": "${workspaceFolder}/src/Weather.Console",
             "console": "internalConsole",
             "stopAtEntry": false
