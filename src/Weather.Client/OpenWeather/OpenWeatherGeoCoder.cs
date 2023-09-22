@@ -9,12 +9,12 @@ public class OpenWeatherGeoCoder : IGeoCoder
 
     private readonly OpenWeatherWeatherClient _client;
     public OpenWeatherGeoCoder(OpenWeatherWeatherClient client)=> _client = client;
-    public async Task<Cordinates> GetCordinates(Location location)
+    public async Task<Coordinates> GetCoordinates(Location location)
     {
-       var cordinates = await _client.GetCordinates(location);
+       var coordinates = await _client.GetCordinates(location);
 
-       var result =  cordinates.FirstOrDefault();
+       var result = coordinates?.FirstOrDefault();
 
-       return new Cordinates(result.Latitude,result.Longitude);
+       return new Coordinates(result.Latitude,result.Longitude);
     }
 }

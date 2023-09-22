@@ -7,9 +7,9 @@ public abstract class AbstractWeatherRepository : IWeatherRepository
     private readonly IGeoCoder _geoCoder;
     public AbstractWeatherRepository(IGeoCoder geoCoder) => _geoCoder = geoCoder;
 
-    private async Task<Cordinates> GetGeoCode(Location location)
+    private async Task<Coordinates> GetGeoCode(Location location)
     {
-        return await _geoCoder.GetCordinates(location);
+        return await _geoCoder.GetCoordinates(location);
     }
     public async Task<WeatherReport> GetWeatherReport(Location location)
     {
@@ -19,5 +19,5 @@ public abstract class AbstractWeatherRepository : IWeatherRepository
 
     }
 
-     protected abstract Task<WeatherReport> GetWeatherReportFromCordinates(Cordinates coordinates,Location location);
+     protected abstract Task<WeatherReport> GetWeatherReportFromCordinates(Coordinates coordinates,Location location);
 }

@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Weather.Client;
-using Weather.Client.Abstracts;
 using Weather.UI;
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
