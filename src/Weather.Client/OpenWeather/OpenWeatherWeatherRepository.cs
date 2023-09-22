@@ -1,8 +1,5 @@
-using System.ComponentModel.DataAnnotations;
-using Microsoft.Extensions.Primitives;
 using Weather.Client.Abstracts;
 using Weather.Client.Models;
-using Weather.Client.OpenWeather.Models;
 using Weather.Domain;
 
 namespace Weather.Client.OpenWeather;
@@ -33,7 +30,7 @@ public class OpenWeatherWeatherRepository : AbstractWeatherRepository
         while (!last)
         {
             var current = enumerator.Current;
-            var currentdatetime = DateTimeOffset.FromUnixTimeSeconds(current.Time);
+            var currentdatetime = DateTimeOffset.FromUnixTimeSeconds(current.Time); // this will be in local time relative to user
             last = !enumerator.MoveNext();
 
             if (currentdatetime.Date == DateTime.Today)
