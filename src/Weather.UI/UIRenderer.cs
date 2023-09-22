@@ -6,7 +6,7 @@ namespace Weather.UI;
 public class UIRenderer
 {
     private readonly IWeatherRepository _weatherRepository;
-    private  IEnumerable<Location> _locations;
+    private  IEnumerable<Location> _locations = new List<Location>();
     public UIRenderer(IWeatherRepository weatherRepository) => _weatherRepository = weatherRepository;
 
 

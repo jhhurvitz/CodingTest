@@ -18,7 +18,7 @@ public class OpenWeatherWeatherClient
         _apiKey = configuration.ApiKey;
         _units = units;
     }
-    public async Task<WeatherResponse?> GetWeatherReport(Coordinates cordinates)
+    public async Task<WeatherResponse> GetWeatherReport(Coordinates cordinates)
     {
         return await MakeJsonGetRequest<WeatherResponse>("data/2.5/forecast",new Dictionary<string, string>(){
             {"lat",$"{cordinates.latitude}"},
@@ -27,7 +27,7 @@ public class OpenWeatherWeatherClient
         });
     }
 
-    public async Task<IEnumerable<GeoLocationResult>?> GetCordinates(Location location)
+    public async Task<IEnumerable<GeoLocationResult>> GetCordinates(Location location)
     {
         return await MakeJsonGetRequest<IEnumerable<GeoLocationResult>>( "geo/1.0/direct",new Dictionary<string, string>(){
             {"q",$"{location.City},{location.State},{location.CountryCode}"}
@@ -35,7 +35,7 @@ public class OpenWeatherWeatherClient
         
     }
 
-    private async Task<T?> MakeJsonGetRequest<T>(string path,Dictionary<string,string> parameters)
+    private async Task<T> MakeJsonGetRequest<T>(string path,Dictionary<string,string> parameters)
     {   
         parameters ??= new Dictionary<string, string>();
 
