@@ -11,11 +11,11 @@ public abstract class AbstractWeatherRepository : IWeatherRepository
     private readonly IGeoCoder _geoCoder;
     public AbstractWeatherRepository(IGeoCoder geoCoder) => _geoCoder = geoCoder;
 
-/// <summary>
-/// Using the goecoder implmnetation passed to the constructor gets a set of coordinates from a city, state and/or zip code
-/// </summary>
-/// <param name="location"></param>
-/// <returns>Task of Coordinate</returns>
+    /// <summary>
+    /// Using the goecoder implmnetation passed to the constructor gets a set of coordinates from a city, state and/or zip code
+    /// </summary>
+    /// <param name="location"></param>
+    /// <returns>Task of Coordinate</returns>
     private async Task<Coordinates> GetGeoCode(Location location)
     {
         return await _geoCoder.GetCoordinates(location);
@@ -30,9 +30,9 @@ public abstract class AbstractWeatherRepository : IWeatherRepository
     {
         var Coordinates = await GetGeoCode(location);
 
-        return await GetWeatherReportFromCoordinates(Coordinates,location);
+        return await GetWeatherReportFromCoordinates(Coordinates, location);
 
     }
 
-     protected abstract Task<WeatherReport> GetWeatherReportFromCoordinates(Coordinates coordinates,Location location);
+    protected abstract Task<WeatherReport> GetWeatherReportFromCoordinates(Coordinates coordinates, Location location);
 }

@@ -18,7 +18,7 @@ public class OpenWeatherGeoCoder : IGeoCoder
     /// Constructor
     /// </summary>
     /// <param name="client">OpenWeatherClient</param>
-    public OpenWeatherGeoCoder(OpenWeatherWeatherClient client)=> _client = client;
+    public OpenWeatherGeoCoder(OpenWeatherWeatherClient client) => _client = client;
 
     /// <summary>
     /// Get Coordinates given a location using the openweather client. 
@@ -27,8 +27,8 @@ public class OpenWeatherGeoCoder : IGeoCoder
     /// <returns></returns>
     public async Task<Coordinates> GetCoordinates(Location location)
     {
-       var coordinates = await _client.GetCordinates(location);
+        var coordinates = await _client.GetCordinates(location);
 
-       return new Coordinates(coordinates.Latitude,coordinates.Longitude);
+        return new Coordinates(coordinates.Latitude, coordinates.Longitude);
     }
 }

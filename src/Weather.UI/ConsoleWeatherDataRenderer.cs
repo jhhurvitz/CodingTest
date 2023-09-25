@@ -11,7 +11,7 @@ namespace Weather.UI;
 public class ConsoleWeatherDataRenderer : IWeatherDataRenderer
 {
     private readonly IWeatherRepository _weatherRepository;
-    private  HashSet<Location> _locations = new HashSet<Location>(); // record types equality is determined by value of each property not reference so hash set will make sure no dupes are presnent. 
+    private HashSet<Location> _locations = new HashSet<Location>(); // record types equality is determined by value of each property not reference so hash set will make sure no dupes are presnent. 
 
     /// <summary>
     /// Constructor for UI Renderer
@@ -31,36 +31,37 @@ public class ConsoleWeatherDataRenderer : IWeatherDataRenderer
     /// <param name="locations">List of Location Records</param>
     public void AddUpdateLocations(IEnumerable<Location> locations)
     {
-        foreach(var location in locations)
+        foreach (var location in locations)
         {
             AddLUpdateLocation(location);
         }
     }
-    
+
     /// <summary>
     /// Retireves the Weather Reports in Parallel then Outputs them in the correct format
     /// </summary>
     /// <returns>Task</returns>
     public async Task Render()
     {
-  
 
-        var locationOutputs = await Task.WhenAll(_locations.Select(location=>RenderLocation(location)));
 
-        foreach(var locationOutput in locationOutputs)
+        var locationOutputs = await Task.WhenAll(_locations.Select(location => RenderLocation(location)));
+
+        foreach (var locationOutput in locationOutputs)
         {
             Console.Write(locationOutput);
         }
     }
 
 
-/// <summary>
-/// Task that Renders an indvidual Location 
-/// </summary>
-/// <param name="location"></param>
-/// <returns>Returns the final string to be rendered</returns>
+    /// <summary>
+    /// Task that Renders an indvidual Location 
+    /// </summary>
+    /// <param name="location"></param>
+    /// <returns>Returns the final string to be rendered</returns>
     private async Task<string> RenderLocation(Location location)
-    {    StringBuilder output = new StringBuilder();
+    {
+        StringBuilder output = new StringBuilder();
         output.AppendLine(new string('_', 30));
         output.AppendLine($"{location.City}, {location.State} ({location.ZipCode})");
         output.AppendLine();
@@ -71,20 +72,20 @@ public class ConsoleWeatherDataRenderer : IWeatherDataRenderer
         {
             var weather = await _weatherRepository.GetWeatherReport(location);
             var today = DateTime.Today;
-            foreach(var average in weather.averages.Where(report=> report.Key.Date != today).Take(5)) // only want 5 next days not today seperating concerns could do that at the service layer but UI concern makes it easier to change if requirements change or re-use of service layer
+            foreach (var average in weather.averages.Where(report => report.Key.Date != today).Take(5)) // only want 5 next days not today seperating concerns could do that at the service layer but UI concern makes it easier to change if requirements change or re-use of service layer
             {
-                string temperatureLine = $"{average.Key.Date:MM/dd/yyyy}{(average.Value.ChanceOfPrecip ? "* ": "  ")}{average.Value.temperature} F";
+                string temperatureLine = $"{average.Key.Date:MM/dd/yyyy}{(average.Value.ChanceOfPrecip ? "* " : "  ")}{average.Value.temperature} F";
                 output.AppendLine(temperatureLine);
             }
             output.AppendLine();
             output.AppendLine();
-           
+
         }
-        catch(DataRetrievalException exception)
+        catch (DataRetrievalException exception)
         {
             output.AppendLine($"an error has occured retrieving your data {exception.Message}");
         }
 
-         return output.ToString();
+        return output.ToString();
     }
 }

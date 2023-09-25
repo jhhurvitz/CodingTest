@@ -7,7 +7,7 @@ namespace Weather.Client.Abstracts;
 /// Interface for classes that take locations (city,state / zip) into a weather report object. 
 /// </summary>
 public interface IWeatherRepository
-{   
+{
     /// <summary>
     /// Takes a location and get the weather for that location. 
     /// </summary>

@@ -9,7 +9,7 @@ public class OpenWeatherWeatherRepository : AbstractWeatherRepository
     private OpenWeatherWeatherClient _client;
     private readonly ILogger<OpenWeatherWeatherRepository> _logger;
 
-    public OpenWeatherWeatherRepository(IGeoCoder geoCoder, OpenWeatherWeatherClient client,ILogger<OpenWeatherWeatherRepository> logger) : base(geoCoder)
+    public OpenWeatherWeatherRepository(IGeoCoder geoCoder, OpenWeatherWeatherClient client, ILogger<OpenWeatherWeatherRepository> logger) : base(geoCoder)
     {
         _client = client;
         _logger = logger;
@@ -17,7 +17,7 @@ public class OpenWeatherWeatherRepository : AbstractWeatherRepository
 
     protected override async Task<WeatherReport> GetWeatherReportFromCoordinates(Coordinates coordinates, Location location)
     {
-     var response = await _client.GetWeatherReport(coordinates);
+        var response = await _client.GetWeatherReport(coordinates);
 
 
         Dictionary<DateTime, Day> processed = new Dictionary<DateTime, Day>();

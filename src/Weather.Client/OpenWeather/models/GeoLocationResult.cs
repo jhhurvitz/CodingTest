@@ -7,10 +7,10 @@ namespace Weather.Client.OpenWeather.Models;
 /// </summary>
 public class GeoLocationResult
 {
-    public string Name {get;set;} = string.Empty;
-    
+    public string Name { get; set; } = string.Empty;
+
     [JsonPropertyName("lat")]
-    public decimal Latitude {get;set;}
+    public decimal Latitude { get; set; }
     [JsonPropertyName("lon")]
-    public decimal Longitude {get;set;}
+    public decimal Longitude { get; set; }
 }

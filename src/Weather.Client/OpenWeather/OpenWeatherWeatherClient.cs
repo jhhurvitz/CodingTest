@@ -16,12 +16,12 @@ public class OpenWeatherWeatherClient
     private readonly string _apiKey;
     private readonly string _units;
 
-/// <summary>
-/// Contstructs a OpenWeatherClient
-/// </summary>
-/// <param name="client">Expecting a httpclient with the base address to openweather definied</param>
-/// <param name="configuration">OpenWeather Configuration</param>
-/// <param name="units"> Units to be used for rendering Imperial , Metric. imperial is default</param>
+    /// <summary>
+    /// Contstructs a OpenWeatherClient
+    /// </summary>
+    /// <param name="client">Expecting a httpclient with the base address to openweather definied</param>
+    /// <param name="configuration">OpenWeather Configuration</param>
+    /// <param name="units"> Units to be used for rendering Imperial , Metric. imperial is default</param>
     public OpenWeatherWeatherClient(HttpClient client, WeatherConfiguration configuration, string units = "imperial")
     {
         _client = client;
@@ -54,7 +54,7 @@ public class OpenWeatherWeatherClient
     {
         if (location.ZipCode == null)
         {
-            var result =  await MakeJsonGetRequest<IEnumerable<GeoLocationResult>>("geo/1.0/direct", new Dictionary<string, string>(){
+            var result = await MakeJsonGetRequest<IEnumerable<GeoLocationResult>>("geo/1.0/direct", new Dictionary<string, string>(){
             {"q",$"{location.City},{location.State},{location.CountryCode}"}
         });
 
@@ -70,14 +70,14 @@ public class OpenWeatherWeatherClient
 
     }
 
-/// <summary>
-/// Generic Method fro making get requests from open weather
-/// </summary>
-/// <typeparam name="T"></typeparam>
-/// <param name="path">Path to Api Endpoint</param>
-/// <param name="parameters">Query String parameters api key will be appended</param>
-/// <returns>Returns T Result where T is the json deserilized from api response</returns>
-/// <exception cref="DataRetrievalException"></exception>
+    /// <summary>
+    /// Generic Method fro making get requests from open weather
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="path">Path to Api Endpoint</param>
+    /// <param name="parameters">Query String parameters api key will be appended</param>
+    /// <returns>Returns T Result where T is the json deserilized from api response</returns>
+    /// <exception cref="DataRetrievalException"></exception>
     private async Task<T> MakeJsonGetRequest<T>(string path, Dictionary<string, string> parameters)
     {
         parameters ??= new Dictionary<string, string>();
@@ -118,7 +118,7 @@ public class OpenWeatherWeatherClient
                     break;
             }
 
-            var content = await response.Content.ReadFromJsonAsync<Dictionary<string,object>>();
+            var content = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
             if (content?.TryGetValue("message", out var message) ?? false)
             {
                 msg.AppendLine("Additional Details:");

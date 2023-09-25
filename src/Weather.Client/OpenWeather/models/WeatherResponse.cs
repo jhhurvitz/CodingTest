@@ -9,23 +9,23 @@ namespace Weather.Client.OpenWeather.Models;
 public class WeatherResponse
 {
     [JsonPropertyName("cnt")]
-    public int Count {get;set;}
+    public int Count { get; set; }
 
     [JsonPropertyName("list")]
-    public List<Report> Reports {get;set;}
+    public List<Report> Reports { get; set; }
 }
 
-public class Report 
+public class Report
 {
     [JsonPropertyName("dt")]
-    public long Time {get;set;}
+    public long Time { get; set; }
 
-      [JsonPropertyName("dt_txt")]
-    public string DateTime {get;set;}
-    public ReportMain Main {get;set;}
-   
+    [JsonPropertyName("dt_txt")]
+    public string DateTime { get; set; }
+    public ReportMain Main { get; set; }
+
     [JsonPropertyName("pop")]
-    public double ChangeOfPercipitation {get; set;}
+    public double ChangeOfPercipitation { get; set; }
 }
 
 public class ReportMain
@@ -33,5 +33,5 @@ public class ReportMain
 
 
     [JsonPropertyName("temp")]
-    public decimal Temperature {get;set;}
+    public decimal Temperature { get; set; }
 }
