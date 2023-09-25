@@ -6,7 +6,7 @@ using Weather.UI;
 using Weather.UI.Abstracts;
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
-builder.Services.AddWeatherRepository(new WeatherConfiguration("https://api.openweathermap.org/", "{your api key here}")); //same here 
+builder.Services.AddWeatherRepository(new WeatherConfiguration("https://api.openweathermap.org/", "{your api key here}")); //this would come from config in real application
 builder.Services.AddSingleton<IWeatherDataRenderer, ConsoleWeatherDataRenderer>();
 using IHost host = builder.Build();
 
