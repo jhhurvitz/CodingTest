@@ -6,12 +6,13 @@ using Weather.UI;
 using Weather.UI.Abstracts;
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
-builder.Services.AddWeatherRepository(new WeatherConfiguration("https://api.openweathermap.org/", "{your api key here}"));
+builder.Services.AddWeatherRepository(new WeatherConfiguration("https://api.openweathermap.org/", "{your api key here}")); //same here 
 builder.Services.AddSingleton<IWeatherDataRenderer, ConsoleWeatherDataRenderer>();
 using IHost host = builder.Build();
 
 var ui = host.Services.GetRequiredService<IWeatherDataRenderer>();
 
+//this would come from config in real application
 ui.AddUpdateLocations(new List<Location>(){
     new Location("Marlboro","MA","01752"),
     new Location("San Diego"," CA","92101"),
