@@ -114,7 +114,7 @@ public class OpenWeatherWeatherClient
                     msg.AppendLine("unauthorized exception this is likely due to an expired or disabled api key (note that api keys take an hour to take effect)");
                     break;
                 default:
-                    msg = msg.AppendLine("Unknown API exepection has occured");
+                    msg = msg.AppendLine("Unknown API exception has occured");
                     break;
             }
 
