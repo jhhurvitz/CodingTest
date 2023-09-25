@@ -2,10 +2,14 @@ using System.Text.Json.Serialization;
 
 
 namespace Weather.Client.OpenWeather.Models;
+
+/// <summary>
+///  Data Transfer Object that represents the result of calling the forceast api. 
+/// </summary>
 public class WeatherResponse
 {
     [JsonPropertyName("cnt")]
-    public decimal Count {get;set;}
+    public int Count {get;set;}
 
     [JsonPropertyName("list")]
     public List<Report> Reports {get;set;}
@@ -21,7 +25,7 @@ public class Report
     public ReportMain Main {get;set;}
    
     [JsonPropertyName("pop")]
-    public decimal ChangeOfPercipitation {get; set;}
+    public double ChangeOfPercipitation {get; set;}
 }
 
 public class ReportMain
