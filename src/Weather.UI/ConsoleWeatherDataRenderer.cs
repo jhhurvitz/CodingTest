@@ -74,7 +74,7 @@ public class ConsoleWeatherDataRenderer : IWeatherDataRenderer
             var today = DateTime.Today;
             foreach (var average in weather.Averages.Where(report => report.Key.Date != today).Take(5)) // only want 5 next days not today seperating concerns could do that at the service layer but UI concern makes it easier to change if requirements change or re-use of service layer
             {
-                string temperatureLine = $"{average.Key.Date:MM/dd/yyyy}{(average.Value.ChanceOfPrecip ? "* " : "  ")}{average.Value.temperature} F";
+                string temperatureLine = $"{average.Key.Date:MM/dd/yyyy}{(average.Value.ChanceOfPrecip ? "* " : "  ")}{average.Value.temperature:F2} F";
                 output.AppendLine(temperatureLine);
             }
             output.AppendLine();
